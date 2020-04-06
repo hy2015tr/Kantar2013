@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KrmKantar2013.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UserName" Type="System.Object" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Kantar2013_WR_service_kantar_functions" Type="(Web Service URL)" Scope="User">
+      <Value Profile="(Default)">http://krmnprd.yucelborugrup.local:8000/sap/bc/srt/rfc/sap/zws_kantar_functions_v2/110/zws_kantar_functions_v2/binding_kantar_functions_v2</Value>
+    </Setting>
+    <Setting Name="PrintMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

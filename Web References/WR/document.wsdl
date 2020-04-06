@@ -1,0 +1,995 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl" />
+  </wsdl:documentation>
+  <wsp:UsingPolicy wsdl:required="true" />
+  <wsp:Policy wsu:Id="BN_BN_BINDING_KANTAR_FUNCTIONS_V2">
+    <saptrnbnd:OptimizedXMLTransfer uri="http://xml.sap.com/2006/11/esi/esp/binxml" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <saptrnbnd:OptimizedXMLTransfer uri="http://www.w3.org/2004/08/soap/features/http-optimization" xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" wsp:Optional="true" />
+    <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+    <wsp:ExactlyOne xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" xmlns:sapsp="http://www.sap.com/webas/630/soap/features/security/policy" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:wst="http://docs.oasis-open.org/ws-sx/ws-trust/200512" xmlns:wsu="http://schemas.xmlsoap.org/ws/2002/07/utility" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken>
+                  <wsp:Policy>
+                    <sp:HttpBasicAuthentication />
+                  </wsp:Policy>
+                </sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:TripleDesRsa15 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="IF_IF_ZWS_KANTAR_FUNCTIONS_V2">
+    <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+      <sapsession:enableSession>false</sapsession:enableSession>
+    </sapsession:Session>
+    <sapcentraladmin:CentralAdministration xmlns:sapcentraladmin="http://www.sap.com/webas/700/soap/features/CentralAdministration/" wsp:Optional="true" />
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZKNT_F_ICERDEKI_KAMYONLAR_V2">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZKNT_F_ITHFIS_KAYIT_V2">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZKNT_F_KANTAR_OKU_V2">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZKNT_F_KANTAR_V2">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZSD_F_KANTAR_01_V2">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZSD_F_KANTAR_02_V2">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZSD_F_KANTAR_03_V2">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="OP_IF_OP_ZSD_F_KANTAR_04_V2">
+    <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+    <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+    <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+    <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char100">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char11">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="11" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char12">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char15">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="15" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char16">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="16" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char18">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="18" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char20">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="20" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char200">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="200" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char220">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="220" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char25">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="25" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char30">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="30" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char32">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="32" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char35">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="35" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char40">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="40" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char50">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="clnt3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="cuky5">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="curr11.2">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="11" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="curr13.2">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="13" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="date">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d\d\d\d-\d\d-\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal5.0">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="5" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal9.0">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="9" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric10">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="10" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric2">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric4">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="numeric6">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="6" />
+          <xsd:pattern value="\d*" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum13.0">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="13" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum13.3">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="13" />
+          <xsd:fractionDigits value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="quantum15.3">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="15" />
+          <xsd:fractionDigits value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="time">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+          <xsd:pattern value="\d\d:\d\d:\d\d" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="unit3">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ZSD_S_KNTR_LIST">
+        <xsd:sequence>
+          <xsd:element name="ERDAT" type="tns:date" />
+          <xsd:element name="ERZET" type="tns:time" />
+          <xsd:element name="FISNO" type="tns:char11" />
+          <xsd:element name="RFFIS" type="tns:char11" />
+          <xsd:element name="PLAKA" type="tns:char18" />
+          <xsd:element name="PLAKAT" type="tns:char40" />
+          <xsd:element name="SOFORID" type="tns:numeric10" />
+          <xsd:element name="SOFORAD" type="tns:char40" />
+          <xsd:element name="ILKTART" type="tns:quantum15.3" />
+          <xsd:element name="MEINS" type="tns:unit3" />
+          <xsd:element name="SEFER" type="tns:char11" />
+          <xsd:element name="GEMIAD" type="tns:char40" />
+          <xsd:element name="FIRMA" type="tns:char10" />
+          <xsd:element name="NAME1" type="tns:char35" />
+          <xsd:element name="SONTART" type="tns:quantum15.3" />
+          <xsd:element name="YBILKTRT" type="tns:quantum15.3" />
+          <xsd:element name="ILKTRS" type="tns:time" />
+          <xsd:element name="ILKTAR" type="tns:date" />
+          <xsd:element name="ILKNAM" type="tns:char12" />
+          <xsd:element name="YBSONTRT" type="tns:quantum15.3" />
+          <xsd:element name="ACKLM" type="tns:char40" />
+          <xsd:element name="KANTAR" type="tns:char2" />
+          <xsd:element name="IKANTAR" type="tns:char2" />
+          <xsd:element name="SKANTAR" type="tns:char2" />
+          <xsd:element name="YBIKANTAR" type="tns:char2" />
+          <xsd:element name="YBSKANTAR" type="tns:char2" />
+          <xsd:element name="XXILKTART" type="tns:quantum15.3" />
+          <xsd:element name="XXSONTART" type="tns:quantum15.3" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="BAPIRET2">
+        <xsd:sequence>
+          <xsd:element name="TYPE" type="tns:char1" />
+          <xsd:element name="ID" type="tns:char20" />
+          <xsd:element name="NUMBER" type="tns:numeric3" />
+          <xsd:element name="MESSAGE" type="tns:char220" />
+          <xsd:element name="LOG_NO" type="tns:char20" />
+          <xsd:element name="LOG_MSG_NO" type="tns:numeric6" />
+          <xsd:element name="MESSAGE_V1" type="tns:char50" />
+          <xsd:element name="MESSAGE_V2" type="tns:char50" />
+          <xsd:element name="MESSAGE_V3" type="tns:char50" />
+          <xsd:element name="MESSAGE_V4" type="tns:char50" />
+          <xsd:element name="PARAMETER" type="tns:char32" />
+          <xsd:element name="ROW" type="xsd:int" />
+          <xsd:element name="FIELD" type="tns:char30" />
+          <xsd:element name="SYSTEM" type="tns:char10" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZMM_S_KANTAR_D">
+        <xsd:sequence>
+          <xsd:element name="MATNR" type="tns:char18" />
+          <xsd:element name="MAKTX" type="tns:char40" />
+          <xsd:element name="MENGE" type="tns:quantum13.3" />
+          <xsd:element name="MEINS" type="tns:unit3" />
+          <xsd:element name="TENZL" type="tns:quantum13.3" />
+          <xsd:element name="KBETR" type="tns:curr11.2" />
+          <xsd:element name="KONWA" type="tns:cuky5" />
+          <xsd:element name="KPEIN" type="tns:decimal5.0" />
+          <xsd:element name="KMEIN" type="tns:unit3" />
+          <xsd:element name="DMBTR" type="tns:curr13.2" />
+          <xsd:element name="WAERS" type="tns:cuky5" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZMM_T_ACIKLAMA">
+        <xsd:sequence>
+          <xsd:element name="MANDT" type="tns:clnt3" />
+          <xsd:element name="ACKLM" type="tns:char40" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_T_SEFERAMBAR">
+        <xsd:sequence>
+          <xsd:element name="MANDT" type="tns:clnt3" />
+          <xsd:element name="SEFER" type="tns:char11" />
+          <xsd:element name="AMBAR" type="tns:numeric4" />
+          <xsd:element name="MIKTAR" type="tns:decimal9.0" />
+          <xsd:element name="ACIKL" type="tns:char30" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_T_SEFERB">
+        <xsd:sequence>
+          <xsd:element name="MANDT" type="tns:clnt3" />
+          <xsd:element name="SEFER" type="tns:char11" />
+          <xsd:element name="BEYAN" type="tns:char25" />
+          <xsd:element name="MLZKODU" type="tns:char18" />
+          <xsd:element name="MIKTARBL" type="tns:quantum15.3" />
+          <xsd:element name="MEINS" type="tns:unit3" />
+          <xsd:element name="CHK" type="tns:char1" />
+          <xsd:element name="ACIKLAMA" type="tns:char50" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZMM_S_T001L">
+        <xsd:sequence>
+          <xsd:element name="LGORT" type="tns:char4" />
+          <xsd:element name="LGOBE" type="tns:char16" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_T_GUMRUK">
+        <xsd:sequence>
+          <xsd:element name="MANDT" type="tns:clnt3" />
+          <xsd:element name="MEMUR" type="tns:char100" />
+          <xsd:element name="SICIL" type="tns:char25" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZMM_T_NAKLIYECI">
+        <xsd:sequence>
+          <xsd:element name="MANDT" type="tns:clnt3" />
+          <xsd:element name="SIRANO" type="tns:numeric6" />
+          <xsd:element name="NAME1" type="tns:char40" />
+          <xsd:element name="LIFNR" type="tns:char10" />
+          <xsd:element name="XFELD" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_T_RENK">
+        <xsd:sequence>
+          <xsd:element name="MANDT" type="tns:clnt3" />
+          <xsd:element name="RENK" type="tns:char20" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_S_SEFER1">
+        <xsd:sequence>
+          <xsd:element name="SEFER" type="tns:char11" />
+          <xsd:element name="GEMIADI" type="tns:char40" />
+          <xsd:element name="YANYIMANMI" type="tns:char1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZMM_S_KANTAR_TESL">
+        <xsd:sequence>
+          <xsd:element name="VBELN" type="tns:char10" />
+          <xsd:element name="POSNR" type="tns:numeric6" />
+          <xsd:element name="ARKTX" type="tns:char40" />
+          <xsd:element name="ADET" type="xsd:int" />
+          <xsd:element name="SEFER" type="tns:char11" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZMM_S_KANTAR_S">
+        <xsd:sequence>
+          <xsd:element name="FISNO" type="tns:char11" />
+          <xsd:element name="ILKTRM" type="tns:quantum13.3" />
+          <xsd:element name="ILKSAAT" type="tns:time" />
+          <xsd:element name="ILKTAR" type="tns:date" />
+          <xsd:element name="SONTRM" type="tns:quantum13.3" />
+          <xsd:element name="SONSAAT" type="tns:time" />
+          <xsd:element name="SONTAR" type="tns:date" />
+          <xsd:element name="MEINS" type="tns:unit3" />
+          <xsd:element name="KANDR" type="tns:numeric2" />
+          <xsd:element name="SOFOR" type="tns:char40" />
+          <xsd:element name="PLAKA" type="tns:char15" />
+          <xsd:element name="LMILKTRM" type="tns:quantum13.3" />
+          <xsd:element name="LMSONTRM" type="tns:quantum13.3" />
+          <xsd:element name="KANTAR" type="tns:char2" />
+          <xsd:element name="NAKLIYE" type="tns:char30" />
+          <xsd:element name="ADET" type="xsd:int" />
+          <xsd:element name="SEFER" type="tns:char11" />
+          <xsd:element name="GEMIADI" type="tns:char40" />
+          <xsd:element name="TART1" type="tns:quantum15.3" />
+          <xsd:element name="TART2" type="tns:quantum15.3" />
+          <xsd:element name="VBELN" type="tns:char10" />
+          <xsd:element name="POSNR" type="tns:numeric6" />
+          <xsd:element name="ARKTX" type="tns:char40" />
+          <xsd:element name="FIRMA" type="tns:char35" />
+          <xsd:element name="RENK" type="tns:char20" />
+          <xsd:element name="MEMUR" type="tns:char100" />
+          <xsd:element name="AMBAR" type="tns:numeric4" />
+          <xsd:element name="ACKLM" type="tns:char40" />
+          <xsd:element name="SABIT" type="tns:char1" />
+          <xsd:element name="MCINSI" type="tns:char50" />
+          <xsd:element name="FIRMAR" type="tns:char50" />
+          <xsd:element name="BAGADT" type="xsd:short" />
+          <xsd:element name="SEVKYERI" type="tns:char50" />
+          <xsd:element name="NAKLIYECI" type="tns:numeric6" />
+          <xsd:element name="LGORT" type="tns:char4" />
+          <xsd:element name="NAME1" type="tns:char30" />
+          <xsd:element name="LGOBE" type="tns:char16" />
+          <xsd:element name="FKDRM" type="tns:char2" />
+          <xsd:element name="BEYAN" type="tns:char25" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_S_ARAC">
+        <xsd:sequence>
+          <xsd:element name="GUID" type="tns:char100" />
+          <xsd:element name="PLAKANO" type="tns:char30" />
+          <xsd:element name="SAPFISNO" type="tns:char11" />
+          <xsd:element name="SAPMESAJ" type="tns:char100" />
+          <xsd:element name="ZAMAN1" type="tns:char30" />
+          <xsd:element name="ZAMAN2" type="tns:char30" />
+          <xsd:element name="TARTIMTIPI" type="tns:char30" />
+          <xsd:element name="TARTIM1" type="xsd:int" />
+          <xsd:element name="TARTIM2" type="xsd:int" />
+          <xsd:element name="NETTUTAR" type="xsd:int" />
+          <xsd:element name="NETGIRIS" type="xsd:int" />
+          <xsd:element name="NETCIKIS" type="xsd:int" />
+          <xsd:element name="SAPSEFERNO" type="tns:char11" />
+          <xsd:element name="GEMIADI" type="tns:char100" />
+          <xsd:element name="GEMINO" type="xsd:int" />
+          <xsd:element name="AMBARNO" type="xsd:int" />
+          <xsd:element name="SAPTESLIMAT" type="tns:char30" />
+          <xsd:element name="MALZEME" type="tns:char100" />
+          <xsd:element name="SAPSEVKNO" type="tns:char4" />
+          <xsd:element name="SEVKYERI" type="tns:char100" />
+          <xsd:element name="GELDIGIYER" type="tns:char100" />
+          <xsd:element name="FIRMAADI" type="tns:char100" />
+          <xsd:element name="ARACNO" type="xsd:int" />
+          <xsd:element name="ADET" type="xsd:int" />
+          <xsd:element name="RENK" type="tns:char30" />
+          <xsd:element name="IRSALIYE" type="tns:char30" />
+          <xsd:element name="NAKLIYE" type="tns:char50" />
+          <xsd:element name="GUMRUK" type="tns:char50" />
+          <xsd:element name="NAKILGEMI" type="tns:char100" />
+          <xsd:element name="BEYANNAME" type="tns:char30" />
+          <xsd:element name="ACIKLAMA1" type="tns:char100" />
+          <xsd:element name="ACIKLAMA2" type="tns:char100" />
+          <xsd:element name="ACIKLAMA3" type="tns:char100" />
+          <xsd:element name="ACIKLAMA4" type="tns:char100" />
+          <xsd:element name="CIKTI" type="xsd:int" />
+          <xsd:element name="SENSOR" type="tns:char10" />
+          <xsd:element name="OPERATOR" type="tns:char50" />
+          <xsd:element name="KANTARPC" type="tns:char20" />
+          <xsd:element name="KANTARDB" type="tns:char50" />
+          <xsd:element name="KNO" type="tns:char10" />
+          <xsd:element name="KAYITEDEN" type="tns:char50" />
+          <xsd:element name="KAYITDURUMU" type="tns:char50" />
+          <xsd:element name="KAYITACIKLAMA" type="tns:char100" />
+          <xsd:element name="KAYITZAMANI" type="tns:char30" />
+          <xsd:element name="ERDAT" type="tns:date" />
+          <xsd:element name="ERNAM" type="tns:char12" />
+          <xsd:element name="ERZET" type="tns:time" />
+          <xsd:element name="FISNO" type="xsd:int" />
+          <xsd:element name="T1" type="tns:char1" />
+          <xsd:element name="T2" type="tns:char1" />
+          <xsd:element name="SN1" type="tns:char20" />
+          <xsd:element name="SN2" type="tns:char20" />
+          <xsd:element name="LOKASYON" type="tns:char20" />
+          <xsd:element name="OP1" type="tns:char30" />
+          <xsd:element name="OP2" type="tns:char30" />
+          <xsd:element name="VBELN" type="tns:char10" />
+          <xsd:element name="POSNR" type="tns:numeric6" />
+          <xsd:element name="NAKILSEFERNO" type="tns:char11" />
+          <xsd:element name="NAKILGEMINO" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_S_GEMI">
+        <xsd:sequence>
+          <xsd:element name="ID" type="xsd:int" />
+          <xsd:element name="SAPSEFERNO" type="tns:char100" />
+          <xsd:element name="GEMIADI" type="tns:char100" />
+          <xsd:element name="MALZEME" type="tns:char100" />
+          <xsd:element name="ACENTA" type="tns:char100" />
+          <xsd:element name="AMBARSAYISI" type="xsd:int" />
+          <xsd:element name="TONAJ" type="xsd:int" />
+          <xsd:element name="NETTONAJ" type="xsd:int" />
+          <xsd:element name="ZAMAN1" type="tns:char100" />
+          <xsd:element name="ZAMAN2" type="tns:char100" />
+          <xsd:element name="NAKILGEMI" type="tns:char1" />
+          <xsd:element name="DURUM" type="tns:char1" />
+          <xsd:element name="LISTELEME" type="tns:char1" />
+          <xsd:element name="TRIPNO" type="tns:char10" />
+          <xsd:element name="GEMILINKNO" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_TT_KNTR_LIST">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSD_S_KNTR_LIST" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_BAPIRET2">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:BAPIRET2" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZMM_S_KANTAR_D">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZMM_S_KANTAR_D" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZMM_T_ACIKLAMA">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZMM_T_ACIKLAMA" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZSD_T_SEFERAMBAR">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSD_T_SEFERAMBAR" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZSD_T_SEFERB">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSD_T_SEFERB" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZMM_S_T001L">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZMM_S_T001L" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZSD_T_GUMRUK">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSD_T_GUMRUK" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZMM_T_NAKLIYECI">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZMM_T_NAKLIYECI" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZSD_T_RENK">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSD_T_RENK" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZSD_S_SEFER1">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSD_S_SEFER1" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TABLE_OF_ZMM_S_KANTAR_TESL">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZMM_S_KANTAR_TESL" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_TT_ARAC">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSD_S_ARAC" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ZSD_TT_GEMI">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="item" type="tns:ZSD_S_GEMI" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ZKNT_F_ICERDEKI_KAMYONLAR_V2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="HEPSI" type="tns:char1" />
+            <xsd:element minOccurs="0" name="KANTAR" type="tns:char2" />
+            <xsd:element minOccurs="0" name="VA_BASTAR" type="tns:date" />
+            <xsd:element minOccurs="0" name="VA_BITTAR" type="tns:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZKNT_F_ICERDEKI_KAMYONLAR_V2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="T_LISTE" type="tns:ZSD_TT_KNTR_LIST" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZKNT_F_ITHFIS_KAYIT_V2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="TB_RET" type="tns:TABLE_OF_BAPIRET2" />
+            <xsd:element name="VA_DEPO" type="tns:char4" />
+            <xsd:element name="VA_FISNO" type="tns:char11" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZKNT_F_ITHFIS_KAYIT_V2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TB_RET" type="tns:TABLE_OF_BAPIRET2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZKNT_F_KANTAR_OKU_V2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="ACKLM" type="tns:char40" />
+            <xsd:element minOccurs="0" name="AMBAR" type="tns:numeric4" />
+            <xsd:element minOccurs="0" name="BAGADT" type="xsd:string" />
+            <xsd:element minOccurs="0" name="BEYAN" type="tns:char25" />
+            <xsd:element minOccurs="0" name="FIRMAR" type="tns:char50" />
+            <xsd:element name="FISNO" type="tns:char11" />
+            <xsd:element minOccurs="0" name="FISRF" type="tns:char11" />
+            <xsd:element minOccurs="0" name="GEMIA" type="tns:char40" />
+            <xsd:element minOccurs="0" name="IHRAC" type="tns:char1" />
+            <xsd:element name="KANTAR" type="tns:char2" />
+            <xsd:element minOccurs="0" name="LGORT" type="tns:char4" />
+            <xsd:element minOccurs="0" name="LMILK" type="xsd:string" />
+            <xsd:element minOccurs="0" name="LMSON" type="xsd:string" />
+            <xsd:element minOccurs="0" name="MCINSI" type="tns:char50" />
+            <xsd:element minOccurs="0" name="MEMUR" type="tns:char100" />
+            <xsd:element minOccurs="0" name="NAKIL" type="tns:char1" />
+            <xsd:element minOccurs="0" name="NAKILSEFERNO" type="tns:char11" />
+            <xsd:element minOccurs="0" name="NAKLIYECI" type="tns:numeric6" />
+            <xsd:element name="OPERATOR" type="tns:char12" />
+            <xsd:element minOccurs="0" name="POSNR" type="tns:numeric6" />
+            <xsd:element minOccurs="0" name="RENK" type="tns:char20" />
+            <xsd:element minOccurs="0" name="SABIT" type="tns:char1" />
+            <xsd:element minOccurs="0" name="SEFER" type="tns:char11" />
+            <xsd:element minOccurs="0" name="SEVKYERI" type="tns:char50" />
+            <xsd:element name="TARTIM" type="tns:quantum13.0" />
+            <xsd:element minOccurs="0" name="TB_RET" type="tns:TABLE_OF_BAPIRET2" />
+            <xsd:element minOccurs="0" name="TB_YRDDET" type="tns:TABLE_OF_ZMM_S_KANTAR_D" />
+            <xsd:element minOccurs="0" name="VBELN" type="tns:char10" />
+            <xsd:element minOccurs="0" name="YFISN" type="tns:char11" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZKNT_F_KANTAR_OKU_V2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="TB_RET" type="tns:TABLE_OF_BAPIRET2" />
+            <xsd:element name="TB_YRDDET" type="tns:TABLE_OF_ZMM_S_KANTAR_D" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZKNT_F_KANTAR_V2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="TB_ACIKLAMA" type="tns:TABLE_OF_ZMM_T_ACIKLAMA" />
+            <xsd:element minOccurs="0" name="TB_AMBAR" type="tns:TABLE_OF_ZSD_T_SEFERAMBAR" />
+            <xsd:element minOccurs="0" name="TB_BEYAN" type="tns:TABLE_OF_ZSD_T_SEFERB" />
+            <xsd:element minOccurs="0" name="TB_DEPO" type="tns:TABLE_OF_ZMM_S_T001L" />
+            <xsd:element minOccurs="0" name="TB_GUMRUK" type="tns:TABLE_OF_ZSD_T_GUMRUK" />
+            <xsd:element minOccurs="0" name="TB_NAKLIYE" type="tns:TABLE_OF_ZMM_T_NAKLIYECI" />
+            <xsd:element minOccurs="0" name="TB_RENK" type="tns:TABLE_OF_ZSD_T_RENK" />
+            <xsd:element minOccurs="0" name="TB_RET" type="tns:TABLE_OF_BAPIRET2" />
+            <xsd:element minOccurs="0" name="TB_SEFER" type="tns:TABLE_OF_ZSD_S_SEFER1" />
+            <xsd:element minOccurs="0" name="TB_TESL" type="tns:TABLE_OF_ZMM_S_KANTAR_TESL" />
+            <xsd:element minOccurs="0" name="TB_YRDDET" type="tns:TABLE_OF_ZMM_S_KANTAR_D" />
+            <xsd:element name="VA_FISNO" type="tns:char11" />
+            <xsd:element minOccurs="0" name="VA_LOKASYON" type="tns:char20" />
+            <xsd:element minOccurs="0" name="VA_PLAKA" type="tns:char20" />
+            <xsd:element minOccurs="0" name="VA_SOFORNO" type="tns:char20" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZKNT_F_KANTAR_V2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="LN_DRM" type="tns:ZMM_S_KANTAR_S" />
+            <xsd:element name="TB_ACIKLAMA" type="tns:TABLE_OF_ZMM_T_ACIKLAMA" />
+            <xsd:element name="TB_AMBAR" type="tns:TABLE_OF_ZSD_T_SEFERAMBAR" />
+            <xsd:element name="TB_BEYAN" type="tns:TABLE_OF_ZSD_T_SEFERB" />
+            <xsd:element name="TB_DEPO" type="tns:TABLE_OF_ZMM_S_T001L" />
+            <xsd:element name="TB_GUMRUK" type="tns:TABLE_OF_ZSD_T_GUMRUK" />
+            <xsd:element name="TB_NAKLIYE" type="tns:TABLE_OF_ZMM_T_NAKLIYECI" />
+            <xsd:element name="TB_RENK" type="tns:TABLE_OF_ZSD_T_RENK" />
+            <xsd:element name="TB_RET" type="tns:TABLE_OF_BAPIRET2" />
+            <xsd:element name="TB_SEFER" type="tns:TABLE_OF_ZSD_S_SEFER1" />
+            <xsd:element name="TB_TESL" type="tns:TABLE_OF_ZMM_S_KANTAR_TESL" />
+            <xsd:element name="TB_YRDDET" type="tns:TABLE_OF_ZMM_S_KANTAR_D" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSD_F_KANTAR_01_V2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="P_ARAC" type="tns:ZSD_TT_ARAC" />
+            <xsd:element name="P_GEMI" type="tns:ZSD_TT_GEMI" />
+            <xsd:element name="P_GET_ARAC" type="tns:char1" />
+            <xsd:element name="P_GET_GEMI" type="tns:char1" />
+            <xsd:element name="P_ZAMAN1" type="tns:char30" />
+            <xsd:element name="P_ZAMAN2" type="tns:char30" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSD_F_KANTAR_01_V2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="P_ARAC" type="tns:ZSD_TT_ARAC" />
+            <xsd:element name="P_GEMI" type="tns:ZSD_TT_GEMI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSD_F_KANTAR_02_V2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="I_TEST" type="tns:char200" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSD_F_KANTAR_02_V2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_MESSAGE" type="tns:char200" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSD_F_KANTAR_03_V2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="I_DELETE" type="tns:char1" />
+            <xsd:element name="I_RECORD" type="tns:ZSD_S_ARAC" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSD_F_KANTAR_03_V2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_MESSAGE" type="tns:char200" />
+            <xsd:element name="E_SUBRC" type="tns:numeric2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSD_F_KANTAR_04_V2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="I_DELETE" type="tns:char1" />
+            <xsd:element name="I_RECORD" type="tns:ZSD_S_GEMI" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ZSD_F_KANTAR_04_V2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="E_MESSAGE" type="tns:char200" />
+            <xsd:element name="E_SUBRC" type="tns:numeric2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ZKNT_F_ICERDEKI_KAMYONLAR_V2">
+    <wsdl:part name="parameters" element="tns:ZKNT_F_ICERDEKI_KAMYONLAR_V2" />
+  </wsdl:message>
+  <wsdl:message name="ZKNT_F_ICERDEKI_KAMYONLAR_V2Response">
+    <wsdl:part name="parameter" element="tns:ZKNT_F_ICERDEKI_KAMYONLAR_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="ZKNT_F_ITHFIS_KAYIT_V2">
+    <wsdl:part name="parameters" element="tns:ZKNT_F_ITHFIS_KAYIT_V2" />
+  </wsdl:message>
+  <wsdl:message name="ZKNT_F_ITHFIS_KAYIT_V2Response">
+    <wsdl:part name="parameter" element="tns:ZKNT_F_ITHFIS_KAYIT_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="ZKNT_F_KANTAR_OKU_V2">
+    <wsdl:part name="parameters" element="tns:ZKNT_F_KANTAR_OKU_V2" />
+  </wsdl:message>
+  <wsdl:message name="ZKNT_F_KANTAR_OKU_V2Response">
+    <wsdl:part name="parameter" element="tns:ZKNT_F_KANTAR_OKU_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="ZKNT_F_KANTAR_V2">
+    <wsdl:part name="parameters" element="tns:ZKNT_F_KANTAR_V2" />
+  </wsdl:message>
+  <wsdl:message name="ZKNT_F_KANTAR_V2Response">
+    <wsdl:part name="parameter" element="tns:ZKNT_F_KANTAR_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="ZSD_F_KANTAR_01_V2">
+    <wsdl:part name="parameters" element="tns:ZSD_F_KANTAR_01_V2" />
+  </wsdl:message>
+  <wsdl:message name="ZSD_F_KANTAR_01_V2Response">
+    <wsdl:part name="parameter" element="tns:ZSD_F_KANTAR_01_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="ZSD_F_KANTAR_02_V2">
+    <wsdl:part name="parameters" element="tns:ZSD_F_KANTAR_02_V2" />
+  </wsdl:message>
+  <wsdl:message name="ZSD_F_KANTAR_02_V2Response">
+    <wsdl:part name="parameter" element="tns:ZSD_F_KANTAR_02_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="ZSD_F_KANTAR_03_V2">
+    <wsdl:part name="parameters" element="tns:ZSD_F_KANTAR_03_V2" />
+  </wsdl:message>
+  <wsdl:message name="ZSD_F_KANTAR_03_V2Response">
+    <wsdl:part name="parameter" element="tns:ZSD_F_KANTAR_03_V2Response" />
+  </wsdl:message>
+  <wsdl:message name="ZSD_F_KANTAR_04_V2">
+    <wsdl:part name="parameters" element="tns:ZSD_F_KANTAR_04_V2" />
+  </wsdl:message>
+  <wsdl:message name="ZSD_F_KANTAR_04_V2Response">
+    <wsdl:part name="parameter" element="tns:ZSD_F_KANTAR_04_V2Response" />
+  </wsdl:message>
+  <wsdl:portType name="ZWS_KANTAR_FUNCTIONS_V2">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#IF_IF_ZWS_KANTAR_FUNCTIONS_V2" />
+    </wsp:Policy>
+    <wsdl:operation name="ZKNT_F_ICERDEKI_KAMYONLAR_V2">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZKNT_F_ICERDEKI_KAMYONLAR_V2" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZKNT_F_ICERDEKI_KAMYONLAR_V2" />
+      <wsdl:output message="tns:ZKNT_F_ICERDEKI_KAMYONLAR_V2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="ZKNT_F_ITHFIS_KAYIT_V2">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZKNT_F_ITHFIS_KAYIT_V2" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZKNT_F_ITHFIS_KAYIT_V2" />
+      <wsdl:output message="tns:ZKNT_F_ITHFIS_KAYIT_V2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="ZKNT_F_KANTAR_OKU_V2">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZKNT_F_KANTAR_OKU_V2" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZKNT_F_KANTAR_OKU_V2" />
+      <wsdl:output message="tns:ZKNT_F_KANTAR_OKU_V2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="ZKNT_F_KANTAR_V2">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZKNT_F_KANTAR_V2" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZKNT_F_KANTAR_V2" />
+      <wsdl:output message="tns:ZKNT_F_KANTAR_V2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="ZSD_F_KANTAR_01_V2">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZSD_F_KANTAR_01_V2" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZSD_F_KANTAR_01_V2" />
+      <wsdl:output message="tns:ZSD_F_KANTAR_01_V2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="ZSD_F_KANTAR_02_V2">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZSD_F_KANTAR_02_V2" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZSD_F_KANTAR_02_V2" />
+      <wsdl:output message="tns:ZSD_F_KANTAR_02_V2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="ZSD_F_KANTAR_03_V2">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZSD_F_KANTAR_03_V2" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZSD_F_KANTAR_03_V2" />
+      <wsdl:output message="tns:ZSD_F_KANTAR_03_V2Response" />
+    </wsdl:operation>
+    <wsdl:operation name="ZSD_F_KANTAR_04_V2">
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_IF_OP_ZSD_F_KANTAR_04_V2" />
+      </wsp:Policy>
+      <wsdl:input message="tns:ZSD_F_KANTAR_04_V2" />
+      <wsdl:output message="tns:ZSD_F_KANTAR_04_V2Response" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BINDING_KANTAR_FUNCTIONS_V2" type="tns:ZWS_KANTAR_FUNCTIONS_V2">
+    <wsp:Policy>
+      <wsp:PolicyReference URI="#BN_BN_BINDING_KANTAR_FUNCTIONS_V2" />
+    </wsp:Policy>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ZKNT_F_ICERDEKI_KAMYONLAR_V2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZKNT_F_ITHFIS_KAYIT_V2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZKNT_F_KANTAR_OKU_V2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZKNT_F_KANTAR_V2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZSD_F_KANTAR_01_V2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZSD_F_KANTAR_02_V2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZSD_F_KANTAR_03_V2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ZSD_F_KANTAR_04_V2">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ZWS_KANTAR_FUNCTIONS_V2">
+    <wsdl:port name="BINDING_KANTAR_FUNCTIONS_V2" binding="tns:BINDING_KANTAR_FUNCTIONS_V2">
+      <soap:address location="http://krmnprd.yucelborugrup.local:8000/sap/bc/srt/rfc/sap/zws_kantar_functions_v2/110/zws_kantar_functions_v2/binding_kantar_functions_v2" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
